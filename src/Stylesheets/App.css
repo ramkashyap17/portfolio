@@ -1,3 +1,143 @@
+@font-face {
+    font-family: 'neuropol';
+    src: url('/neuropol.ttf');
+}
+
 .App{
   display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.7)), url("/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  -webkit-filter: blur(16px);
+  -moz-filter: blur(16px);
+  -o-filter: blur(16px);
+  -ms-filter: blur(16px);
+  filter: blur(16px);
+  transform: scale(1.1);
+}
+
+.content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: 100%;
+}
+
+.terminal-header{
+  height: 30px;
+  background-color: rgba(0,0,0,.8);
+}
+
+.tab-title{
+  display: flex;
+  border-bottom: 30px solid rgba(82, 92, 84, .8);
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  height: 0;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-title__text{
+  color: white;
+  justify-content: flex-start;
+  /* align-items: center; */
+  flex: 1 1;
+  text-align: center;
+  font-size: 12px;
+  display: flex;
+  margin-top: 28px;
+  margin-left: 8px;
+}
+
+.close__button{
+  width: 30px;
+  display: flex;
+  margin-top: 24px;
+}
+
+.tab-title__close{
+  padding: 4px 4px;
+  width: 14px;
+  height: 14px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+.terminal{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 40vh;
+  flex: 3;
+}
+
+.terminal-body{
+  flex: 1;
+  background-color: rgba(0,0,0,.5);
+}
+
+.terminal-prompt{
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+.terminal-prompt-text{
+  font-size: 14px;
+  color: #37ff14;
+  animation:
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+.home{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-header{
+  height: 100px;
+}
+
+.home-header__text{
+  font-size: 60px;
+  font-family: neuropol;
+  vertical-align:baseline;
+  color: rgba(36, 158, 14,.5);
+  letter-spacing: .15em; /* Adjust as needed */
 }

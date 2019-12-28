@@ -20,6 +20,7 @@ export default class App extends React.Component {
       case 0:
         return (
           <div className="App">
+            <div className="background-image"></div>
             <Home/>
           </div>
         );
