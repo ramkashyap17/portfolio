@@ -1,26 +1,58 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './Stylesheets/App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Home from './Components/Home/Home'
+import Portfolio from './Components/Portfolio/Portfolio'
+import Skills from './Components/Skills/Skills'
+import Experience from './Components/Experience/Experience'
+import About from './Components/About/About'
+
+export default class App extends React.Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      showPage: 0,
+    }
+  }
+  render(){
+    switch(this.state.showPage){
+      case 0:
+        return (
+          <div className="App">
+            <Home/>
+          </div>
+        );
+      case 1:
+        return (
+          <div className="App">
+            <Portfolio/>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="App">
+            <Skills/>
+          </div>
+        );
+      case 3:
+        return (
+          <div className="App">
+            <Experience/>
+          </div>
+        );
+      case 4:
+        return (
+          <div className="App">
+            <About/>
+          </div>
+        );
+      default:
+      return (
+        <div className="App">
+          <Home/>
+        </div>
+      );
+    }
+  }
 }
-
-export default App;
