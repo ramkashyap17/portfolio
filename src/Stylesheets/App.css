@@ -20,7 +20,7 @@
   right: 0;
   z-index: 1;
   display: block;
-  background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.7)), url("/background.jpg");
+  background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.7)), url("/giphy.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -90,9 +90,8 @@
 .terminal{
   display: flex;
   flex-direction: column;
-  width: 50vw;
-  height: 40vh;
-  flex: 3;
+  width: 60vw;
+  height: 45vh;
 }
 
 .terminal-body{
@@ -136,24 +135,20 @@
 }
 
 .home-header{
-  height: 100px;
-}
-
-.home-header__text{
-  font-size: 60px;
-  font-weight: 600;
-  font-family: spaceage;
-  vertical-align:baseline;
-  color: rgba(36, 158, 14,1);
   letter-spacing: .15em; /* Adjust as needed */
 
   text-shadow: -10px 1px 0 #000,
                           1px 1px 0 #000,
                          1px -1px 0 #000,
                         -1px -1px 0 #000;
-  animation:
-    typing 3.5s steps(40, end),
-    blink-caret .75s step-end infinite;
+}
+
+.home-header__text{
+  font-size: 6vw;
+  font-weight: 600;
+  font-family: spaceage;
+  vertical-align:baseline;
+  color: rgba(36, 158, 14,1);
 }
 
 .home-subheader{

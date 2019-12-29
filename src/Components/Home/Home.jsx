@@ -4,23 +4,68 @@ import ReactAnime from 'react-animejs'
 
 const {Anime, stagger} = ReactAnime
 
-let step = 0;
 
 export default class Home extends React.Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      step: 0,
+      connectionStatus: 'CONNECTING',
+    }
     this.updateStep = this.updateStep.bind(this)
+    this.updateText = this.updateText.bind(this)
   }
 
   componentDidMount(){
-    setTimeout(function(){ step = 1; }, 5000);
-    // setTimeout(this.updateStep(1), 5000)
-    // setTimeout(this.updateStep(2), 8000)
-    // setTimeout(this.updateStep(3), 13000)
+    setTimeout(this.updateStep, 5000);
+    setTimeout(this.updateText, 7000);
+    setTimeout(this.updateText, 9000)
+    setTimeout(this.updateText, 11000)
+    setTimeout(this.updateStep, 14000)
+  }
+
+  updateText(){
+    switch(this.state.connectionStatus){
+      case 'CONNECTING':
+        this.setState({
+          step: 1,
+          connectionStatus: 'PLEASE WAIT . . . '
+        })
+        break;
+      case 'PLEASE WAIT . . . ':
+        this.setState({
+          step: 1,
+          connectionStatus: 'ESTABLISHING'
+        })
+        break;
+      case 'ESTABLISHING':
+        this.setState({
+          step: 1,
+          connectionStatus: 'SESSION'
+        })
+        break;
+    }
   }
 
   updateStep(s){
-    step = s;
+    switch(this.state.step){
+      case 0:
+        this.setState({
+          step: 1,
+        })
+        break;
+      case 1:
+        this.setState({
+          step: 3,
+        })
+        break;
+      case 2:
+        this.setState({
+          step: 3,
+        })
+        break;
+    }
   }
 
   render(){
@@ -28,7 +73,7 @@ export default class Home extends React.Component {
       <div className="content">
         <div className="home">
         {
-          step === 0 &&
+          this.state.step === 0 &&
           <Anime
           initial={[
             {
@@ -57,7 +102,7 @@ export default class Home extends React.Component {
           </Anime>
         }
         {
-          step === 0 &&
+          this.state.step === 0 &&
           <Anime
           initial={[
             {
@@ -86,7 +131,7 @@ export default class Home extends React.Component {
           </Anime>
         }
         {
-          step === 0 &&
+          this.state.step === 0 &&
           <Anime
           initial={[
             {
@@ -131,19 +176,38 @@ export default class Home extends React.Component {
           </Anime>
         }
         {
-          step === 1 &&
-          <div id="Box" className="home-header">
-            <h1 className="home-header__text">PLEASE W A I T. . .</h1>
-          </div>
+          this.state.step === 1 &&
+          <Anime
+          initial={[
+            {
+              targets: "#Box",
+              keyframes: [
+                {
+                  opacity: 0
+                },
+                {
+                  opacity: 1
+                },
+              ],
+              // easing:'spring',
+              duration: 800,
+              loop: true
+            }
+          ]}
+          >
+            <div id="Box" className="home-header">
+              <h1 className="home-header__text">{this.state.connectionStatus}</h1>
+            </div>
+          </Anime>
         }
-        {
-          step === 2 &&
+        {/*
+          this.state.step === 0 &&
           <h1 className="home-subheader">ssh -i random_key.pub random_server@1.12.123.235</h1>
-        }
+        */}
         {
-          step === 3 &&
+          this.state.step === 3 &&
           <div className="terminal">
-            <div className="sterminal-header">
+            <div className="terminal-header">
               <div className="tab-title">
                 <div className="close__button">
                   <img src="/cross-out.png" className="tab-title__close"/>
